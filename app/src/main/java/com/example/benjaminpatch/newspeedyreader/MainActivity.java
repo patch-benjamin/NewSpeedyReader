@@ -1,17 +1,34 @@
 package com.example.benjaminpatch.newspeedyreader;
 
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import java.io.File;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    TextView welcomePhrase;
+    static String userName;
+    String welcome;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        welcomePhrase = (TextView)findViewById(R.id.welcomePhrase);
+        userName = "BT Halpatch";
+        welcome = "Welcome Back " + userName;
+        welcomePhrase.setText(welcome);
     }
 
     @Override
@@ -24,7 +41,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // automatically handle clicks on the Hcome/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
@@ -35,4 +52,8 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    public void levelsClick(View v){
+        startActivity(new Intent(this, levels.class));
+    }
+
 }

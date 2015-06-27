@@ -1,6 +1,25 @@
 <resources>
     <string name="app_name">New Speedy Reader</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="luserName">BT Halpatch</string>
     <string name="action_settings">Settings</string>
+    <string name="welcomePhrase">Welcome Back</string>
+    <string name="levelSelectButton">Level Select</string>
+    <string name="changeUserButton">Change User</string>
+    <string name="title_activity_levels">levels</string>
+    <string name="levelHeader">Levels</string>
+    <string name="title_activity_reading_assistant">readingAssistant</string>
+    <string name="userName">Benjamin</string>
+    <string name="currentLevel">Level ...</string>
+    <string name="playbuttondescription">Play Button</string>
+    <string name="levelTitle1">1</string>
+    <string name="levelTitle2">2</string>
+    <string name="levelTitle3">3</string>
+    <string name="levelTitle4">4</string>
+    <string name="levelTitle5">5</string>
+    <string name="levelTitle6">6</string>
+    <string name="levelTitle7">7</string>
+    <string name="levelTitle8">8</string>
+    <string name="levelTitle9">9</string>
+    <string name="levelTitle10">10</string>
 </resources>
