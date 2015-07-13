@@ -26,6 +26,7 @@ public class readingAssistant extends ActionBarActivity {
   TextView nameDisplay;
   String welcome;
   String userName; ///Should be shareable through each activity.........
+  Integer levelNum;
 
   MediaPlayer song;
   boolean isPaused;
@@ -43,7 +44,7 @@ public class readingAssistant extends ActionBarActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_reading_assistant);
     Intent i = getIntent();
-    Integer levelNum = i.getIntExtra(levels.EXTRA_MESSAGE, 1);
+    levelNum = i.getIntExtra(levels.EXTRA_MESSAGE, 1);
     welcome = "Level " + levelNum;
     userName = MainActivity.userName;
     levelWelcome = (TextView) findViewById(R.id.levelNum);
@@ -60,6 +61,7 @@ public class readingAssistant extends ActionBarActivity {
     progressBar = (ProgressBar) findViewById(R.id.songProgress);
     progressBar.setMax(90);
     progressBar.getProgress();
+    song = MediaPlayer.create(this, R.raw.level1song);
     }
 
 
@@ -79,10 +81,22 @@ public class readingAssistant extends ActionBarActivity {
     return super.onOptionsItemSelected(item);
   }
 
-  public void stopMusic() {song.release(); started = false;}
+  public void stopMusic() {
+    if(started) {
+      song.stop();
+      song.release();
+      started = false;
+      isPaused = true;
+      secsPassed = 0;
+      if(counter != null){
+        counter.cancel();
+        counter = null;
+      }
+    }
+  }
 
   @Override
-  protected void onPause(){
+  protected void onPause() {
     super.onPause();
     stopMusic();
   }
@@ -95,14 +109,81 @@ public class readingAssistant extends ActionBarActivity {
     }
   }
 
+  private void setSong(){
+    switch (levelNum){
+      case 1:
+        song = MediaPlayer.create(this, R.raw.level1song);
+        break;
+      case 2:
+        song = MediaPlayer.create(this, R.raw.level2song);
+        break;
+      case 3:
+        song = MediaPlayer.create(this, R.raw.level3song);
+        break;
+      case 4:
+        song = MediaPlayer.create(this, R.raw.level4song);
+        break;
+      case 5:
+        song = MediaPlayer.create(this, R.raw.level5song);
+        break;
+      case 6:
+        song = MediaPlayer.create(this, R.raw.level6song);
+        break;
+      case 7:
+        song = MediaPlayer.create(this, R.raw.level7song);
+        break;
+      case 8:
+        song = MediaPlayer.create(this, R.raw.level8song);
+        break;
+      case 9:
+        song = MediaPlayer.create(this, R.raw.level9song);
+        break;
+      case 10:
+        song = MediaPlayer.create(this, R.raw.level10song);
+        break;
+      case 11:
+        song = MediaPlayer.create(this, R.raw.level11song);
+        break;
+      case 12:
+        song = MediaPlayer.create(this, R.raw.level12song);
+        break;
+      case 13:
+        song = MediaPlayer.create(this, R.raw.level13song);
+        break;
+      case 14:
+        song = MediaPlayer.create(this, R.raw.level14song);
+        break;
+      case 15:
+        song = MediaPlayer.create(this, R.raw.level15song);
+        break;
+      case 16:
+        song = MediaPlayer.create(this, R.raw.level16song);
+        break;
+      case 17:
+        song = MediaPlayer.create(this, R.raw.level17song);
+        break;
+      case 18:
+        song = MediaPlayer.create(this, R.raw.level18song);
+        break;
+      case 19:
+        song = MediaPlayer.create(this, R.raw.level19song);
+        break;
+      case 20:
+        song = MediaPlayer.create(this, R.raw.level20song);
+        break;
+      default:
+        song = MediaPlayer.create(this, R.raw.level1song);
+    }
+  }
+
   public void playPause(View v){
     if(!started){
-        if (counter != null){
-            Log.i("counterStatus", "Counter is null and being started...");
-            counter.cancel();
-            counter = null;
-        }
-      song = MediaPlayer.create(this, R.raw.level1);
+      if (counter != null){
+        Log.i("counterStatus", "Counter is null and being started...");
+        counter.cancel();
+        counter = null;
+      }
+      setSong();
       song.start();
       song.setLooping(true);
       isPaused = false;
@@ -142,12 +223,9 @@ public class readingAssistant extends ActionBarActivity {
       }
 
       public void onFinish() {
-        song.stop();
-          song.release();
-        song = null;
-        secsPassed = 0;
-        isPaused = true;
-        started = false;
+        stopMusic();
+        int progress = 0;
+        progressBar.setProgress(progress);
         changePicture();
           if (progressBar.getProgress() < progressBar.getMax() && !isPaused && !started) {
               Log.e("progressTag", "ProgressBar did not complete before song ended!!!! Idiot!!");

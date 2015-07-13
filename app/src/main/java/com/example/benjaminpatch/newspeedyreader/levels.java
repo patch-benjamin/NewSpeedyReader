@@ -101,4 +101,64 @@ public class levels extends ActionBarActivity {
         i.putExtra(EXTRA_MESSAGE, message);
         startActivity(i);
     }
+    public void onclick11(View v){
+        Integer message = 11;
+        Intent i = new Intent(this, readingAssistant.class);
+        i.putExtra(EXTRA_MESSAGE, message);
+        startActivity(i);
+    }
+    public void onclick12(View v){
+        Integer message = 12;
+        Intent i = new Intent(this, readingAssistant.class);
+        i.putExtra(EXTRA_MESSAGE, message);
+        startActivity(i);
+    }
+    public void onclick13(View v){
+        Integer message = 13;
+        Intent i = new Intent(this, readingAssistant.class);
+        i.putExtra(EXTRA_MESSAGE, message);
+        startActivity(i);
+    }
+    public void onclick14(View v){
+        Integer message = 14;
+        Intent i = new Intent(this, readingAssistant.class);
+        i.putExtra(EXTRA_MESSAGE, message);
+        startActivity(i);
+    }
+    public void onclick15(View v){
+        Integer message = 15;
+        Intent i = new Intent(this, readingAssistant.class);
+        i.putExtra(EXTRA_MESSAGE, message);
+        startActivity(i);
+    }
+    public void onclick16(View v){
+        Integer message = 16;
+        Intent i = new Intent(this, readingAssistant.class);
+        i.putExtra(EXTRA_MESSAGE, message);
+        startActivity(i);
+    }
+    public void onclick17(View v){
+        Integer message = 17;
+        Intent i = new Intent(this, readingAssistant.class);
+        i.putExtra(EXTRA_MESSAGE, message);
+        startActivity(i);
+    }
+    public void onclick18(View v){
+        Integer message = 18;
+        Intent i = new Intent(this, readingAssistant.class);
+        i.putExtra(EXTRA_MESSAGE, message);
+        startActivity(i);
+    }
+    public void onclick19(View v){
+        Integer message = 19;
+        Intent i = new Intent(this, readingAssistant.class);
+        i.putExtra(EXTRA_MESSAGE, message);
+        startActivity(i);
+    }
+    public void onclick20(View v){
+        Integer message = 20;
+        Intent i = new Intent(this, readingAssistant.class);
+        i.putExtra(EXTRA_MESSAGE, message);
+        startActivity(i);
+    }
 }

@@ -22,4 +22,21 @@
     <string name="levelTitle8">8</string>
     <string name="levelTitle9">9</string>
     <string name="levelTitle10">10</string>
+    <string name="levelTitle11">11</string>
+    <string name="levelTitle12">12</string>
+    <string name="levelTitle13">13</string>
+    <string name="levelTitle14">14</string>
+    <string name="levelTitle15">15</string>
+    <string name="levelTitle16">16</string>
+    <string name="levelTitle17">17</string>
+    <string name="levelTitle18">18</string>
+    <string name="levelTitle19">19</string>
+    <string name="levelTitle20">20</string>
+    <string name="title_activity_user_list">userList</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_new_user">newUser</string>
+    <string name="title_activity_book_list">bookList</string>
+    <string name="title_activity_new_book">newBook</string>
+    <string name="newUserText">Add User</string>
 </resources>

@@ -24,6 +24,22 @@
             android:name=".readingAssistant"
             android:label="@string/title_activity_reading_assistant" >
         </activity>
+        <activity
+            android:name=".userList"
+            android:label="@string/title_activity_user_list" >
+        </activity>
+        <activity
+            android:name=".newUser"
+            android:label="@string/title_activity_new_user" >
+        </activity>
+        <activity
+            android:name=".bookList"
+            android:label="@string/title_activity_book_list" >
+        </activity>
+        <activity
+            android:name=".newBook"
+            android:label="@string/title_activity_new_book" >
+        </activity>
     </application>
 
 </manifest>
