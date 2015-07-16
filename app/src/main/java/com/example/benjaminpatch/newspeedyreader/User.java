@@ -1,19 +1,43 @@
 package com.example.benjaminpatch.newspeedyreader;
 
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
 /**
  * a class for each user. contains the books they are reading,
  * the highest level they have completed, and their name.
  */
+
+//int resID = getResources().getIdentifier(buttonID, "id", "com.sample.project");
+
 public class User {
     String firstName;
     String lastName;
     int highestLevel;
     ArrayList<Book> books;
 
+    public User(){
+        books = new ArrayList<Book>();
+    }
+
+    public User(String fName, String lName, int level){
+        firstName = fName;
+        lastName = lName;
+        highestLevel = level;
+        books = new ArrayList<Book>();
+    }
+
+    public User(String fName, String lName, int level, Book book){
+        firstName = fName;
+        lastName = lName;
+        highestLevel = level;
+        books = new ArrayList<Book>();
+        books.add(book);
+    }
+
     public String getName(){
-        return firstName + lastName;
+        return firstName + " " + lastName;
     }
 
     public void setName(String newFirst, String newLast){
@@ -41,6 +65,10 @@ public class User {
         Book book = new Book(bookName, pagesPerLine);
         books.add(book);
     }
+    public void addBook(Book newBook){
+        books.add(newBook);
+    }
+
     public ArrayList<Book> getBooks(){
         return books;
     }
@@ -64,6 +92,11 @@ public class User {
     public void fromString(String string){
         //UserName~HighestLevel~Book1~Book2 etc.
         //UserName = firstName_lastName
+/*
+0        Ben_Patch
+1        12
+2        BOM^20
+*/
 
         String[] parts = string.split("~");
         String[] name = parts[0].split("_");
@@ -75,7 +108,7 @@ public class User {
         //list of books
         for(int i = 2; i < parts.length; i++){
             Book temp = new Book();
-            temp.fromString(parts[i]);
+            temp.fromString(parts[i]); //Greatness^5
             books.add(temp);
         }
     }

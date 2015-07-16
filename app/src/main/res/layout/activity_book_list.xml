@@ -6,7 +6,68 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.benjaminpatch.newspeedyreader.bookList">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addBookString"
+        android:id="@+id/book1"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="84dp"
+        android:onClick="chooseBookClick1" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addBookString"
+        android:id="@+id/book2"
+        android:layout_below="@+id/book1"
+        android:layout_centerHorizontal="true"
+        android:onClick="chooseBookClick2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addBookString"
+        android:id="@+id/book3"
+        android:layout_below="@+id/book2"
+        android:layout_centerHorizontal="true"
+        android:onClick="chooseBookClick3" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addBookString"
+        android:id="@+id/book4"
+        android:layout_below="@+id/book3"
+        android:layout_centerHorizontal="true"
+        android:onClick="chooseBookClick4" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addBookString"
+        android:id="@+id/book5"
+        android:layout_below="@+id/book4"
+        android:layout_centerHorizontal="true"
+        android:onClick="chooseBookClick5" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addBookString"
+        android:id="@+id/book6"
+        android:layout_below="@+id/book5"
+        android:layout_centerHorizontal="true"
+        android:onClick="chooseBookClick6" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addBookString"
+        android:id="@+id/book7"
+        android:layout_below="@+id/book6"
+        android:layout_centerHorizontal="true"
+        android:onClick="chooseBookClick7" />
 
 </RelativeLayout>

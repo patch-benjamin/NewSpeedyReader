@@ -70,8 +70,9 @@ public class Book {
 
     public void fromString(String string) {
         //Book = nameOfBook^wordsPerPage (done in the book.toString() method
-        String[] parts = string.split("^");
-        setName(parts[0]);
-        setWordsPerLine(Integer.parseInt(parts[1]));
+        String[] stringParts = string.split("\\^");
+        setName(stringParts[0]);
+        setWordsPerLine(Integer.parseInt(stringParts[1]));
+//            MainActivity.welcomePhrase.setText(stringParts[1]);
     }
 }

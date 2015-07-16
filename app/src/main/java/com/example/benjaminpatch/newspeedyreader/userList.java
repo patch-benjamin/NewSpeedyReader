@@ -1,9 +1,11 @@
 package com.example.benjaminpatch.newspeedyreader;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
@@ -12,7 +14,6 @@ import java.util.Set;
 
 public class userList extends ActionBarActivity {
 
-    ArrayList<User> users;
 
 
     @Override
@@ -26,11 +27,11 @@ public class userList extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_user_list, menu);
 
-        for(int i = 0; i < users.size(); i++){
-            String name = "userName" + i+1;
-            int resID = getResources().getIdentifier(name, "id", "com.example.benjamin");
+        for(int i = 0; i < MainActivity.users.size(); i++){
+            String name = "userName" + (i+1);
+            int resID = getResources().getIdentifier(name, "id", getPackageName());
             Button temp = (Button) findViewById(resID);
-            temp.setText(users.get(i).getName());
+            temp.setText(MainActivity.users.get(i).getName());
         }
 
 
@@ -51,4 +52,68 @@ public class userList extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void chooseUserClick1(View v) {
+        Button but = (Button) findViewById(R.id.userName1);
+        String name = (String) but.getText();
+        if(name.equals("Add User")){
+            startActivity(new Intent(this, newUser.class));
+        }
+        else{
+            MainActivity.setUser(0);
+            MainActivity.saveData();
+            startActivity(new Intent(this, bookList.class));
+        }
+    }
+    public void chooseUserClick2(View v) {
+        Button but = (Button) findViewById(R.id.userName2);
+        String name = (String) but.getText();
+        if(name.equals("Add User")){
+            MainActivity.setUser(1);
+            MainActivity.saveData();
+            startActivity(new Intent(this, newUser.class));
+        }
+        else{
+            startActivity(new Intent(this, bookList.class));
+        }
+    }
+    public void chooseUserClick3(View v) {
+        Button but = (Button) findViewById(R.id.userName3);
+        String name = (String) but.getText();
+        if(name.equals("Add User")){
+            MainActivity.setUser(2);
+            MainActivity.saveData();
+            startActivity(new Intent(this, newUser.class));
+        }
+        else{
+            startActivity(new Intent(this, bookList.class));
+        }
+    }
+    public void chooseUserClick4(View v) {
+        Button but = (Button) findViewById(R.id.userName4);
+        String name = (String) but.getText();
+        if(name.equals("Add User")){
+            startActivity(new Intent(this, newUser.class));
+        }
+        else{
+            MainActivity.setUser(3);
+            MainActivity.saveData();
+            startActivity(new Intent(this, bookList.class));
+        }
+    }
+    public void chooseUserClick5(View v) {
+        Button but = (Button) findViewById(R.id.userName5);
+        String name = (String) but.getText();
+        if(name.equals("Add User")){
+            startActivity(new Intent(this, newUser.class));
+        }
+        else{
+            MainActivity.setUser(4);
+            MainActivity.saveData();
+            startActivity(new Intent(this, bookList.class));
+        }
+    }
+
+
+
 }

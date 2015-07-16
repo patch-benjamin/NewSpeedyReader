@@ -1,9 +1,11 @@
 package com.example.benjaminpatch.newspeedyreader;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class newBook extends ActionBarActivity {
@@ -35,4 +37,19 @@ public class newBook extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    public void saveData(View v){
+//        SharedPreferences.Editor editStuff = MainActivity.savedData.edit();
+//        String data = new String();
+//        for(int i = 0; i < MainActivity.users.size(); i++) {
+//            if(i == 0)
+//                data += MainActivity.users.get(i).toString();
+//            else
+//                data += "`" + MainActivity.users.get(i).toString();
+//        }
+//        editStuff.putString("userData", data);
+//        editStuff.commit();
+    }
+
 }

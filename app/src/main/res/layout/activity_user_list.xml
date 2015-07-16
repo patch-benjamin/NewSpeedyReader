@@ -20,8 +20,8 @@
         android:id="@+id/userName1"
         android:layout_marginTop="123dp"
         android:layout_below="@+id/scrollView2"
-        android:layout_alignLeft="@+id/userName2"
-        android:layout_alignStart="@+id/userName2" />
+        android:layout_centerHorizontal="true"
+        android:onClick="chooseUserClick1" />
 
     <Button
         android:layout_width="wrap_content"
@@ -29,8 +29,8 @@
         android:text="@string/newUserText"
         android:id="@+id/userName2"
         android:layout_below="@+id/userName1"
-        android:layout_alignLeft="@+id/userName3"
-        android:layout_alignStart="@+id/userName3" />
+        android:layout_centerHorizontal="true"
+        android:onClick="chooseUserClick2" />
 
     <Button
         android:layout_width="wrap_content"
@@ -38,8 +38,8 @@
         android:text="@string/newUserText"
         android:id="@+id/userName3"
         android:layout_below="@+id/userName2"
-        android:layout_alignLeft="@+id/userName4"
-        android:layout_alignStart="@+id/userName4" />
+        android:layout_centerHorizontal="true"
+        android:onClick="chooseUserClick3" />
 
     <Button
         android:layout_width="wrap_content"
@@ -47,7 +47,8 @@
         android:text="@string/newUserText"
         android:id="@+id/userName4"
         android:layout_below="@+id/userName3"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="chooseUserClick4" />
 
     <Button
         android:layout_width="wrap_content"
@@ -55,5 +56,6 @@
         android:text="@string/newUserText"
         android:id="@+id/userName5"
         android:layout_below="@+id/userName4"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="chooseUserClick5" />
 </RelativeLayout>

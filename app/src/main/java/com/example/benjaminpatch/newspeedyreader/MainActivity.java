@@ -20,27 +20,40 @@ import java.util.TimerTask;
 
 public class MainActivity extends ActionBarActivity {
 
+//    static TextView welcomePhrase;
+//    static String userName;
     TextView welcomePhrase;
     static String userName;
     static ArrayList<User> users;
     String welcome;
+    static User user;
+    static int userID;
 
     //Load User Data
-    SharedPreferences savedData;
-    String filename = "userNameData";
+//    static SharedPreferences savedData;
+//    public static String filename = "userData";
+    static SharedPreferences savedData;
+    String filename = "userData";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        welcomePhrase = (TextView)findViewById(R.id.welcomePhrase);
-        userName = "BT Halpatch";
-        welcome = "Welcome Back " + userName;
-        welcomePhrase.setText(welcome);
+        users = new ArrayList<User>();
+        savedData = getSharedPreferences(filename, 0);
 
         //Load User Data
         loadData();
+//        populateSave();
+//        saveData();
+
+        user = users.get(userID);
+        welcomePhrase = (TextView)findViewById(R.id.welcomePhrase);
+        userName = user.getName();
+        welcome = "Welcome Back " + userName;
+        welcomePhrase.setText(welcome);
+
     }
 
     @Override
@@ -64,16 +77,33 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    public static void setUser(int newUserID){
+        userID = newUserID;
+        user = users.get(userID);
+    }
+
     public void levelsClick(View v){
         startActivity(new Intent(this, levels.class));
     }
 
-    public void usersClick(View v) {
+    public void userListClick(View v) {
 
         startActivity(new Intent(this, userList.class));
     }
 
-    public void saveData(View v){
+    private void populateSave(){
+        Book tempBook = new Book ("BOM", 20);
+        User temp = new User("Ben", "Patch", 12, tempBook);
+        users.add(temp);
+        User temp1 = new User("Tyler", "Hall", 12, new Book("EVIL", 200));
+        users.add(temp1);
+        User temp2 = new User("Beyler", "Halpatch", 12, new Book("Greatness", 5));
+        users.add(temp2);
+    }
+
+    public static void saveData(){
         SharedPreferences.Editor editStuff = savedData.edit();
         String data = new String();
         for(int i = 0; i < users.size(); i++) {
@@ -82,12 +112,13 @@ public class MainActivity extends ActionBarActivity {
             else
                 data += "`" + users.get(i).toString();
         }
+        data += "`" + String.valueOf(userID);
         editStuff.putString("userData", data);
         editStuff.commit();
     }
 
     public void loadData(){
-        savedData = getSharedPreferences(filename, 0);
+//        savedData = getSharedPreferences(filename, 0); //may not be needed here. see oncreate.
         String data = savedData.getString("userData", "Failure in Loading");
         if(data.equals("Failure in Loading")){
             //do something noticeable...
@@ -97,10 +128,17 @@ public class MainActivity extends ActionBarActivity {
         else {
             String[] userData = data.split("`");
             for (int i = 0; i < userData.length; i++) {
-                User temp = new User();
-                temp.fromString(userData[i]);
-                users.add(temp);
+                if ((i + 1) != userData.length){
+                    User temp = new User();
+                    temp.fromString(userData[i]);
+                    users.add(temp);
+                }
+                else{
+                    userID = Integer.valueOf(userData[i]);
+                }
             }
+//            welcomePhrase.setText("First User's First Book: " + users.get(0).getBooks().get(0).getName());
+
         }
     }
 
