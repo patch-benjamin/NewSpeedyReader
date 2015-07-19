@@ -40,4 +40,5 @@
     <string name="title_activity_new_book">newBook</string>
     <string name="newUserText">Add User</string>
     <string name="addBookString">Add Book</string>
+    <string name="addUserButton">Add User</string>
 </resources>

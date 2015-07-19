@@ -16,11 +16,11 @@ public class bookList extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
 
-        for(int i = 0; i < MainActivity.user.getBooks().size(); i++){
+        for(int i = 0; i < Globals.getUser().getBooks().size(); i++){
             String name = "book" + (i+1);
             int resID = getResources().getIdentifier(name, "id", getPackageName());
             Button temp = (Button) findViewById(resID);
-            temp.setText(MainActivity.user.getBooks().get(i).getName());
+            temp.setText(Globals.getUser().getBooks().get(i).getName());
         }
 
     }

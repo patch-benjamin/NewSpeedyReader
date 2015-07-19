@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.benjaminpatch.newspeedyreader.userList">
+    tools:context="com.example.benjaminpatch.newspeedyreader.userList"
+    android:backgroundTint="#ffff8794">
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -58,4 +59,65 @@
         android:layout_below="@+id/userName4"
         android:layout_centerHorizontal="true"
         android:onClick="chooseUserClick5" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Del"
+        android:id="@+id/button24"
+        android:layout_alignTop="@+id/userName1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="#ffff5d49"
+        android:onClick="delUser1" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Del"
+        android:id="@+id/button25"
+        android:backgroundTint="#ffff5d49"
+        android:layout_above="@+id/userName3"
+        android:layout_alignLeft="@+id/button24"
+        android:layout_alignStart="@+id/button24"
+        android:onClick="delUser2" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Del"
+        android:id="@+id/button26"
+        android:backgroundTint="#ffff5d49"
+        android:layout_above="@+id/userName4"
+        android:layout_alignLeft="@+id/button25"
+        android:layout_alignStart="@+id/button25"
+        android:onClick="delUser3" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Del"
+        android:id="@+id/button27"
+        android:backgroundTint="#ffff5d49"
+        android:layout_above="@+id/userName5"
+        android:layout_alignLeft="@+id/button26"
+        android:layout_alignStart="@+id/button26"
+        android:onClick="delUser4" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Del"
+        android:id="@+id/button28"
+        android:backgroundTint="#ffff5d49"
+        android:layout_alignBottom="@+id/userName5"
+        android:layout_alignLeft="@+id/button27"
+        android:layout_alignStart="@+id/button27"
+        android:onClick="delUser5" />
+
 </RelativeLayout>

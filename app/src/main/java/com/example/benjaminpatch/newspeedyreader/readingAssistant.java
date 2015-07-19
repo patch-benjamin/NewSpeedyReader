@@ -46,7 +46,7 @@ public class readingAssistant extends ActionBarActivity {
     Intent i = getIntent();
     levelNum = i.getIntExtra(levels.EXTRA_MESSAGE, 1);
     welcome = "Level " + levelNum;
-    userName = MainActivity.userName;
+    userName = Globals.getUser().getName();
     levelWelcome = (TextView) findViewById(R.id.levelNum);
     levelWelcome.setText(welcome);
     nameDisplay = (TextView) findViewById(R.id.nameDisplay);

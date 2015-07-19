@@ -1,19 +1,26 @@
 package com.example.benjaminpatch.newspeedyreader;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 
 public class newUser extends ActionBarActivity {
+
+    EditText firstName;
+    EditText lastName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user);
+        Log.i("testing", Globals.getUsers().toString());
     }
 
     @Override
@@ -38,20 +45,37 @@ public class newUser extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    void saveClick(View v){
+//    protected void onPause(){
+//        super.onPause();
+//    }
+//
+//    protected void onResume() {
+//        super.onResume();
+//
+//    }
+//    protected void onStop(){
+//        super.onStop();
+//    }
+//    protected void onStart(){
+//        super.onStart();
+//    }
+//    protected void onDestroy(){
+//        super.onDestroy();
+//    }
+//
 
+    public void addUserButtonClick(View v){
+        firstName = (EditText) findViewById(R.id.firstNameBox);
+        lastName = (EditText) findViewById(R.id.lastNameBox);
+
+        User temp = new User();
+        temp.setName(String.valueOf(firstName.getText()), String.valueOf(lastName.getText()));
+        Globals.addUser(temp);
+
+        startActivity(new Intent(this, MainActivity.class));
     }
-    public void saveData(View v){
-//        SharedPreferences.Editor editStuff = MainActivity.savedData.edit();
-//        String data = new String();
-//        for(int i = 0; i < MainActivity.users.size(); i++) {
-//            if(i == 0)
-//                data += MainActivity.users.get(i).toString();
-//            else
-//                data += "`" + MainActivity.users.get(i).toString();
-//        }
-//        editStuff.putString("userData", data);
-//        editStuff.commit();
-    }
+
+
+
 
 }

@@ -3,6 +3,7 @@ package com.example.benjaminpatch.newspeedyreader;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,40 +21,30 @@ import java.util.TimerTask;
 
 public class MainActivity extends ActionBarActivity {
 
-//    static TextView welcomePhrase;
-//    static String userName;
     TextView welcomePhrase;
-    static String userName;
-    static ArrayList<User> users;
     String welcome;
-    static User user;
-    static int userID;
-
     //Load User Data
-//    static SharedPreferences savedData;
-//    public static String filename = "userData";
     static SharedPreferences savedData;
     String filename = "userData";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i("testing", "starting onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        users = new ArrayList<User>();
+//        users = new ArrayList<User>();
         savedData = getSharedPreferences(filename, 0);
 
+        welcomePhrase = (TextView)findViewById(R.id.welcomePhrase);
         //Load User Data
-        loadData();
 //        populateSave();
 //        saveData();
+        loadData();
 
-        user = users.get(userID);
-        welcomePhrase = (TextView)findViewById(R.id.welcomePhrase);
-        userName = user.getName();
-        welcome = "Welcome Back " + userName;
+        welcome = "Welcome Back " + Globals.getUser().getName();
         welcomePhrase.setText(welcome);
-
+        Log.i("testing", Globals.getUsers().toString());
     }
 
     @Override
@@ -78,11 +69,21 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-    public static void setUser(int newUserID){
-        userID = newUserID;
-        user = users.get(userID);
+    @Override
+    public void onResume(){
+        super.onResume();
+        welcome = "Welcome Back " + Globals.getUser().getName();
+//        welcomePhrase.setText(welcome);
     }
+    @Override
+    public void onStop(){
+        super.onStop();
+    }
+    @Override
+    public void onStart(){
+        super.onStart();
+    }
+
 
     public void levelsClick(View v){
         startActivity(new Intent(this, levels.class));
@@ -94,36 +95,52 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void populateSave(){
+        Log.i("testing", "starting popluateSave");
+        ArrayList<User> userList = new ArrayList<User>();
         Book tempBook = new Book ("BOM", 20);
         User temp = new User("Ben", "Patch", 12, tempBook);
-        users.add(temp);
+        userList.add(temp);
         User temp1 = new User("Tyler", "Hall", 12, new Book("EVIL", 200));
-        users.add(temp1);
+        userList.add(temp1);
         User temp2 = new User("Beyler", "Halpatch", 12, new Book("Greatness", 5));
-        users.add(temp2);
+        userList.add(temp2);
+        int id = 0;
+
+        SharedPreferences.Editor editStuff = savedData.edit();
+        String data = new String();
+        for(int i = 0; i < userList.size(); i++) {
+            if(i == 0)
+                data += userList.get(i).toString();
+            else
+                data += "`" + userList.get(i).toString();
+        }
+        data += "`" + String.valueOf(id);
+        editStuff.putString("userData", data);
+        editStuff.commit();
     }
 
     public static void saveData(){
+        Log.i("testing", "starting saveData");
         SharedPreferences.Editor editStuff = savedData.edit();
         String data = new String();
-        for(int i = 0; i < users.size(); i++) {
+        for(int i = 0; i < Globals.getUsers().size(); i++) {
             if(i == 0)
-                data += users.get(i).toString();
+                data += Globals.getUser(i).toString();
             else
-                data += "`" + users.get(i).toString();
+                data += "`" + Globals.getUser(i).toString();
         }
-        data += "`" + String.valueOf(userID);
+        data += "`" + String.valueOf(Globals.getUserID());
         editStuff.putString("userData", data);
         editStuff.commit();
     }
 
     public void loadData(){
+        Log.i("testing", "LoadingInfo");
 //        savedData = getSharedPreferences(filename, 0); //may not be needed here. see oncreate.
         String data = savedData.getString("userData", "Failure in Loading");
         if(data.equals("Failure in Loading")){
             //do something noticeable...
-            userName = data;
-            welcomePhrase.setText(userName);
+            welcomePhrase.setText(data);
         }
         else {
             String[] userData = data.split("`");
@@ -131,14 +148,19 @@ public class MainActivity extends ActionBarActivity {
                 if ((i + 1) != userData.length){
                     User temp = new User();
                     temp.fromString(userData[i]);
-                    users.add(temp);
+                    Log.i("testing", "attempting to add user");
+                    Globals.addUser(temp, true);
+                    Log.i("testing", "user added");
                 }
                 else{
-                    userID = Integer.valueOf(userData[i]);
+                    Log.i("testing", "attempting to set userID");
+                    Globals.setUserID(Integer.valueOf(userData[i]));
+                    Log.i("testing", "userID set");
                 }
             }
-//            welcomePhrase.setText("First User's First Book: " + users.get(0).getBooks().get(0).getName());
-
+            Log.i("testing", "attempting to set text");
+//                welcomePhrase.setText(Globals.getUsers().toString());
+            Log.i("testing", "set text completed.");
         }
     }
 

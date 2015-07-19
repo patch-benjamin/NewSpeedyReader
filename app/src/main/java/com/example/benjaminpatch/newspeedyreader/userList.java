@@ -3,10 +3,12 @@ package com.example.benjaminpatch.newspeedyreader;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -14,12 +16,11 @@ import java.util.Set;
 
 public class userList extends ActionBarActivity {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
+        Log.i("testing", Globals.getUsers().toString());
     }
 
     @Override
@@ -27,11 +28,11 @@ public class userList extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_user_list, menu);
 
-        for(int i = 0; i < MainActivity.users.size(); i++){
+        for(int i = 0; i < Globals.getUsers().size(); i++){
             String name = "userName" + (i+1);
             int resID = getResources().getIdentifier(name, "id", getPackageName());
             Button temp = (Button) findViewById(resID);
-            temp.setText(MainActivity.users.get(i).getName());
+            temp.setText(Globals.getUsers().get(i).getName());
         }
 
 
@@ -53,6 +54,21 @@ public class userList extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+//    @Override
+//    public void onResume(){
+//        super.onResume();
+//    }
+//    @Override
+//    public void onStart(){
+//        super.onStart();
+//    }
+//    @Override
+//    public void onStop(){
+//        super.onStop();
+//
+//        Log.i("testing", "OnStop is called, userData saved: " + Globals.getUserID());
+//    }
+
     public void chooseUserClick1(View v) {
         Button but = (Button) findViewById(R.id.userName1);
         String name = (String) but.getText();
@@ -60,8 +76,8 @@ public class userList extends ActionBarActivity {
             startActivity(new Intent(this, newUser.class));
         }
         else{
-            MainActivity.setUser(0);
-            MainActivity.saveData();
+            Globals.setUserID(0);
+            Log.i("testing", "userclick1 is called, userData: " + Globals.getUserID());
             startActivity(new Intent(this, bookList.class));
         }
     }
@@ -69,11 +85,11 @@ public class userList extends ActionBarActivity {
         Button but = (Button) findViewById(R.id.userName2);
         String name = (String) but.getText();
         if(name.equals("Add User")){
-            MainActivity.setUser(1);
-            MainActivity.saveData();
             startActivity(new Intent(this, newUser.class));
         }
         else{
+            Globals.setUserID(1);
+            Log.i("testing", "userclick2 is called, userData: " + Globals.getUserID());
             startActivity(new Intent(this, bookList.class));
         }
     }
@@ -81,11 +97,11 @@ public class userList extends ActionBarActivity {
         Button but = (Button) findViewById(R.id.userName3);
         String name = (String) but.getText();
         if(name.equals("Add User")){
-            MainActivity.setUser(2);
-            MainActivity.saveData();
             startActivity(new Intent(this, newUser.class));
         }
         else{
+            Globals.setUserID(2);
+            Log.i("testing", "userclick3 is called, userData: " + Globals.getUserID());
             startActivity(new Intent(this, bookList.class));
         }
     }
@@ -96,8 +112,8 @@ public class userList extends ActionBarActivity {
             startActivity(new Intent(this, newUser.class));
         }
         else{
-            MainActivity.setUser(3);
-            MainActivity.saveData();
+            Globals.setUserID(3);
+            Log.i("testing", "userclick4 is called, userData: " + Globals.getUserID());
             startActivity(new Intent(this, bookList.class));
         }
     }
@@ -108,10 +124,41 @@ public class userList extends ActionBarActivity {
             startActivity(new Intent(this, newUser.class));
         }
         else{
-            MainActivity.setUser(4);
-            MainActivity.saveData();
+            Globals.setUserID(4);
+            Log.i("testing", "userclick5 is called, userData: " + Globals.getUserID());
             startActivity(new Intent(this, bookList.class));
         }
+    }
+
+    public void delUser1(View v){
+        Globals.getUsers().remove(0);
+        Globals.setUserID(Globals.getUserID() - 1);
+
+        startActivity(new Intent(this, MainActivity.class));
+    }
+    public void delUser2(View v){
+        Globals.getUsers().remove(1);
+        Globals.setUserID(Globals.getUserID() - 1);
+
+        startActivity(new Intent(this, MainActivity.class));
+    }
+    public void delUser3(View v){
+        Globals.getUsers().remove(2);
+        Globals.setUserID(Globals.getUserID() - 1);
+
+        startActivity(new Intent(this, MainActivity.class));
+    }
+    public void delUser4(View v){
+        Globals.getUsers().remove(3);
+        Globals.setUserID(Globals.getUserID() - 1);
+
+        startActivity(new Intent(this, MainActivity.class));
+    }
+    public void delUser5(View v){
+        Globals.getUsers().remove(4);
+        Globals.setUserID(Globals.getUserID() - 1);
+
+        startActivity(new Intent(this, MainActivity.class));
     }
 
 
